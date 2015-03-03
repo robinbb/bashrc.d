@@ -1,5 +1,3 @@
-#!/bin/bash
-
 #  Copyright 2015 Robin Bate Boerop <me@robinbb.com>
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,4 +12,17 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
+if [ -f ~/.bashrc ]; then
+   . ~/.bashrc
+fi
 
+# Support Nix, if present.
+#
+if [ -e /home/robin/.nix-profile/etc/profile.d/nix.sh ]
+then
+   . /home/robin/.nix-profile/etc/profile.d/nix.sh
+fi
+
+# User-specific environment and startup programs.
+#
+. bash_profile.custom

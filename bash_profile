@@ -27,4 +27,4 @@ fi
 
 # User-specific environment and startup programs.
 #
-. bash_profile.custom
+[[ -d ~/.bashrc.d ]] && . ~/.bashrc.d/bash_profile.custom

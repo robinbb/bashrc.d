@@ -15,8 +15,13 @@
 echo "bashrc"
 
 exit_trap() {
-   echo "exit_trap"
+   :
 }
 trap exit_trap EXIT
 
-[[ -r ./bashrc.custom ]] && . ./bashrc.custom
+umask 077
+
+export PS1="\u@\h:\W[\!] "
+export HISTSIZE=9999
+
+[[ -d ~/bashrc.d ]] && . ~/.bashrc.d/bashrc.custom

@@ -16,6 +16,7 @@
 
 set -e
 dir=$(pwd)
+bashrc_dir=~/.bashrc.d
 backup_dir=$dir/backup-bashrc-files
 dot_files=(bash_logout bash_profile bash_login bashrc profile)
 indent() { echo "   $*" ; }
@@ -47,3 +48,5 @@ for f in ${dot_files[*]} ; do
       fi
    fi
 done
+mkdir -p $bashrc_dir
+ln -s $dir/*.custom $bashrc_dir

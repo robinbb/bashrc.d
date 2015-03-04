@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #  Copyright 2015 Robin Bate Boerop <me@robinbb.com>
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,19 +14,11 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-echo "bash_profile"
+set -e
+backup_dir='./backup-bashrc-files'
 
-# Support Nix, if present.
-#
-if [[ -z "$NIX_LINK" && -e $HOME/.nix-profile/etc/profile.d/nix.sh ]]
-then
-   . $HOME/.nix-profile/etc/profile.d/nix.sh 
-fi
-
-if [ -f ~/.bashrc ] ; then
-   . ~/.bashrc
-fi
-
-# User-specific environment and startup programs.
-#
-. bash_profile.custom
+for f in ${backup_dir}/* ; do
+   fn=${f##*/}
+   echo $fn
+   mv $f ~/.$fn
+done

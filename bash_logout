@@ -12,5 +12,5 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-# STOP! Do not put code here. It will not what you think it will. Instead,
-# please add code to the exit_trap() function in bashrc.
+# STOP! Do not put code here. It will not do what you think it will.
+# Instead, please add code to the exit_trap() function in the bashrc file.

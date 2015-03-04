@@ -12,7 +12,11 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-function exit_trap () {
-}
+echo "bashrc"
 
+exit_trap() {
+   echo "exit_trap"
+}
 trap exit_trap EXIT
+
+[[ -r ./bashrc.custom ]] && . ./bashrc.custom

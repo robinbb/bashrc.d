@@ -12,7 +12,9 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-echo "bash_profile"
+add2path() {
+   [[ ":$PATH:" =~ ":$1:" ]] || PATH=$1:${PATH#:}
+}
 
 # Support Nix, if present.
 #

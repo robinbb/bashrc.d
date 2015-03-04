@@ -27,7 +27,7 @@ if [ -n "$PS1" ] ; then
    export HISTSIZE=9999
    export EDITOR='vi'
 
-   alias colorls='ls --color=auto -U'
+   alias colorls='ls --color=auto'
    alias l='colorls -a'
    alias ll='colorls -la'
 fi

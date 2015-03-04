@@ -12,7 +12,8 @@
 #  See the License for the specific language governing permissions and
 #  limitations under the License.
 
-echo "bashrc"
+# DO NOT generate output from this script! Otherwise, 'scp' and 'sftp' will
+# not work when connecting to this account.
 
 exit_trap() {
    :
@@ -21,7 +22,14 @@ trap exit_trap EXIT
 
 umask 077
 
-export PS1="\u@\h:\W[\!] "
-export HISTSIZE=9999
+if [ -n "$PS1" ] ; then
+   export PS1="\u@\h:\W[\!] "
+   export HISTSIZE=9999
+   export EDITOR='vi'
+
+   alias colorls='ls --color=auto -U'
+   alias l='colorls -a'
+   alias ll='colorls -la'
+fi
 
 [[ -d ~/bashrc.d ]] && . ~/.bashrc.d/bashrc.custom

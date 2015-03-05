@@ -1,4 +1,6 @@
-# robinbb/bashrc.d : An APLv2-licensed startup script framework for the Bash shell
+# bashrc.d
+
+An APLv2-licensed startup script framework for the Bash shell
 
 ## Instructions
 
@@ -12,3 +14,10 @@
 4. See the instructions in ~/.bashrc.d/custom/README.
 5. Send Github pull requests with your changes to files other than those of
    the '~/.bashrc.d/custom' directory.
+
+## Features
+
+- Fully customizable
+- Compatible with 'sh' shell invocation
+- Compatible with 'sftp' and 'scp'
+- Built-in Nix functionality

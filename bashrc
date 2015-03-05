@@ -29,22 +29,27 @@ exit_trap() {
 }
 trap exit_trap EXIT
 umask 077
-if [ -n "$PS1" ] ; then
+if [ "$PS1" ] ; then
    # This shell is interactive.
-   #
    alias colorls='ls --color=auto'
    alias l='colorls -a'
    alias ll='colorls -la'
    export EDITOR='vi'
-
-   # Bash-only interactive features.
-   #
-   if [ -n "$BASH" ] ; then
+   if [ "$BASH" ] ; then
+      # Bash-only interactive features.
       export PS1="\u@\h:\W[\!] "
       export HISTSIZE=9999
    fi
 fi
 
+# Source custom bashrc scripts.
+#
 BASHRC_D_README_ARG=bashrc
 . $BASHRC_D_DIR/custom/README
 unset -v BASHRC_D_README_ARG
+
+# Source the system-wide /etc/bashrc unless otherwise directed.
+#
+if [ -z "$BASHRC_D_NO_ETC_BASHRC" ] && [ -r /etc/bashrc ] ; then
+   . /etc/bashrc
+fi

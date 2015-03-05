@@ -1,0 +1,2 @@
+# Do not put anything in this file; Bash will not read it. Bash would only
+# read it if ~/.bash_profile did not exist.

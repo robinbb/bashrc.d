@@ -1,3 +1,10 @@
+#!/bin/sh
+#
+# README.sh
+#
+# This file describes the directory structure in which it is found.
+# ...
+#
 #  Copyright 2015 Robin Bate Boerop <me@robinbb.com>
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,18 +23,16 @@
 #     Robin Bate Boerop <me@robinbb.com>
 #
 
-export BASHRC_D_BASH_PROFILE_SOURCED=1
-export BASHRC_D_DIR=~/.bashrc.d
+export BASHRC_D_README_SOURCED=1
+export BASHRC_D_CUSTOM_DIR=~/.bashrc.d/custom
 
-# Bash utility functions upon which the custom scripts can rely, but which
-# can be overridden if desired.
+# Custom scripts in this directory are always sourced if they are readable.
 #
-add2path() {
-   [[ ":$PATH:" =~ ":$1:" ]] || PATH=$1:${PATH#:}
-}
+[ -r ${BASHRC_D_CUSTOM_DIR}/$1 ] && . ${BASHRC_D_CUSTOM_DIR}/$1
 
-# Custom bash_profile startup scripts.
-#
-$BASHRC_D_DIR/custom/README.sh bash_profile
-
-[ -f ~/.profile ] && . ~/.profile
+#case $1 in
+#   bash_profile) ${BASHRC_D_CUSTOM_DIR}/bash_profile ;;
+#   profile)      ${BASHRC_D_CUSTOM_DIR}/profile ;;
+#   bashrc)       ${BASHRC_D_CUSTOM_DIR}/bashrc ;;
+#   *)            ${BASHRC_D_CUSTOM_DIR}/$1 ;;
+#esac

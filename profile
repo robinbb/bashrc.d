@@ -16,18 +16,22 @@
 #     Robin Bate Boerop <me@robinbb.com>
 #
 
-export BASHRC_D_BASH_PROFILE_SOURCED=1
+export BASHRC_D_PROFILE_SOURCED=1
 export BASHRC_D_DIR=~/.bashrc.d
 
-# Bash utility functions upon which the custom scripts can rely, but which
-# can be overridden if desired.
+# Custom startup scripts.
 #
-add2path() {
-   [[ ":$PATH:" =~ ":$1:" ]] || PATH=$1:${PATH#:}
-}
+$BASHRC_D_DIR/custom/README.sh profile
 
-# Custom bash_profile startup scripts.
+# Support Nix, if present and not explicitly disabled.
 #
-$BASHRC_D_DIR/custom/README.sh bash_profile
+if [ -n $BASHRC_D_NO_NIX ] && \
+   [ -z "$NIX_PATH" ]      && \
+   [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]
+then
+   . $HOME/.nix-profile/etc/profile.d/nix.sh 
+fi
 
-[ -f ~/.profile ] && . ~/.profile
+# Source ~/.bashrc upon login.
+#
+[ -f ~/.bashrc ] && . ~/.bashrc

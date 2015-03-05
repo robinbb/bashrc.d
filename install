@@ -15,21 +15,21 @@
 #  limitations under the License.
 
 set -e
-dir=$(pwd)
+
 bashrc_dir=~/.bashrc.d
-backup_dir=$dir/backup-bashrc-files
+backup_dir=$bashrc_dir/backup-bashrc-files
 dot_files=(bash_logout bash_profile bash_login bashrc profile)
 indent() { echo "   $*" ; }
 
-mkdir -p ${backup_dir}
 for f in ${dot_files[*]} ; do
-   target=$dir/$f
+   target=$bashrc_dir/$f
    if [[ -e $target ]] ; then
       echo "Handling $target : "
       d=~/.$f
       if [[ ! -h $d || $(readlink $d) != $target ]]
       then
          indent "$d is not already linked."
+         mkdir -p ${backup_dir}
          b=${backup_dir}/$f
          if [ -e $b ] ; then
             indent "$b exists. Can't perform backup. Exiting."
@@ -49,4 +49,3 @@ for f in ${dot_files[*]} ; do
    fi
 done
 mkdir -p $bashrc_dir
-ln -s $dir/*.custom $bashrc_dir

@@ -21,7 +21,9 @@ export BASHRC_D_DIR=~/.bashrc.d
 
 # Custom startup scripts.
 #
-$BASHRC_D_DIR/custom/README.sh profile
+BASHRC_D_README_ARG=profile
+. $BASHRC_D_DIR/custom/README
+unset -v BASHRC_D_README_ARG
 
 # Support Nix, if present and not explicitly disabled.
 #

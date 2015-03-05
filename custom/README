@@ -1,6 +1,4 @@
-#!/bin/sh
-#
-# README.sh
+# README
 #
 # This file describes the directory structure in which it is found.
 # ...
@@ -28,7 +26,8 @@ export BASHRC_D_CUSTOM_DIR=~/.bashrc.d/custom
 
 # Custom scripts in this directory are always sourced if they are readable.
 #
-[ -r ${BASHRC_D_CUSTOM_DIR}/$1 ] && . ${BASHRC_D_CUSTOM_DIR}/$1
+script=${BASHRC_D_CUSTOM_DIR}/${BASHRC_D_README_ARG}
+[ -r $script ] && . $script
 
 #case $1 in
 #   bash_profile) ${BASHRC_D_CUSTOM_DIR}/bash_profile ;;

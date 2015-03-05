@@ -45,4 +45,6 @@ if [ -n "$PS1" ] ; then
    fi
 fi
 
-[ -d ${BASHRC_D_DIR} ] && ${BASHRC_D_DIR}/custom/README.sh bashrc
+BASHRC_D_README_ARG=bashrc
+. $BASHRC_D_DIR/custom/README
+unset -v BASHRC_D_README_ARG

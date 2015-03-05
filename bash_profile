@@ -28,6 +28,8 @@ add2path() {
 
 # Custom bash_profile startup scripts.
 #
-$BASHRC_D_DIR/custom/README.sh bash_profile
+BASHRC_D_README_ARG=bash_profile
+. $BASHRC_D_DIR/custom/README
+unset -v BASHRC_D_README_ARG
 
 [ -f ~/.profile ] && . ~/.profile

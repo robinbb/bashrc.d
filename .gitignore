@@ -1,4 +1,3 @@
-bash_profile.custom
-bash_login.custom
-bashrc.custom
 backup-bashrc-files
+custom/*
+!custom/README

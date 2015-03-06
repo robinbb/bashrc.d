@@ -23,6 +23,14 @@ export BASHRC_D_CUSTOM_DIR=~/.bashrc.d/custom
 
 # Custom scripts in this directory are always sourced if they are readable.
 #
+script=${BASHRC_D_CUSTOM_DIR}/hosts/${HOSTNAME}/${USER}/${BASHRC_D_README_ARG}
+[ -r $script ] && . $script
+script=${BASHRC_D_CUSTOM_DIR}/users/${USER}/${HOSTNAME}/${BASHRC_D_README_ARG}
+[ -r $script ] && . $script
+script=${BASHRC_D_CUSTOM_DIR}/hosts/${HOSTNAME}/${BASHRC_D_README_ARG}
+[ -r $script ] && . $script
+script=${BASHRC_D_CUSTOM_DIR}/users/${USER}/${BASHRC_D_README_ARG}
+[ -r $script ] && . $script
 script=${BASHRC_D_CUSTOM_DIR}/${BASHRC_D_README_ARG}
 [ -r $script ] && . $script
 

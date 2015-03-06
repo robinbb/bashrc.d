@@ -1,3 +1,5 @@
 backup-bashrc-files
 custom/*
 !custom/README
+!custom/hosts
+!custom/users

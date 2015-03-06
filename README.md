@@ -16,7 +16,7 @@ An APLv2-licensed startup script framework for the Bash shell
 ## Features
 
 - Easy-to-customize framework for
-  [Bash](http://en.wikipedia.org/wiki/Bash_(Unix_shell) shell startup scripts
+  [Bash](http://en.wikipedia.org/wiki/Bash_(Unix_shell)) shell startup scripts
 - Compatible with both the
   [Bourne shell](http://en.wikipedia.org/wiki/Bourne_shell) ('sh') and the
   [Debian Almquist shell](http://en.wikipedia.org/w/index.php?title=Debian_Almquist_shell)

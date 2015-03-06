@@ -63,4 +63,14 @@ if [ "$PS1" ] ; then
       [ $? ] || eval $($BASHRC_D_KEYCHAIN --eval)
       unset -v BASHRC_D_KEYCHAIN
    fi
+   if [ "$BASH" ] ; then
+      if [ -n $BASHRC_D_NO_NIX ] && \
+         [ "$NIX_PATH" ]         && \
+         [ -d $HOME/.nix-profile/etc/bash_completion.d ]
+      then
+         for i in $HOME/.nix-profile/etc/bash_completion.d/* ; do
+            . $i
+         done
+      fi
+   fi
 fi

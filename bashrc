@@ -37,6 +37,7 @@ if [ "$PS1" ] ; then
    export EDITOR='vi'
    if [ "$BASH" ] ; then
       # Bash-only interactive features.
+      shopt -s histappend
       export PS1="\u@\h:\W[\!] "
       export HISTSIZE=9999
    fi

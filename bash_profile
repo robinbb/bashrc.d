@@ -16,8 +16,7 @@
 #     Robin Bate Boerop <me@robinbb.com>
 #
 
-export BASHRC_D_BASH_PROFILE_SOURCED=1
-export BASHRC_D_DIR=~/.bashrc.d
+BASHRC_D_DIR=~/.bashrc.d
 
 bashrc_d_on_exit_commands=()
 bashrc_d_invoke_on_exit_commands() {
@@ -31,17 +30,18 @@ bashrc_d_on_exit() {
    trap bashrc_d_invoke_on_exit_commands EXIT
 }
 
-# Bash utility functions upon which the custom scripts can rely, but which
-# can be overridden if desired.
-#
 add2path() {
    [[ ":$PATH:" =~ ":$1:" ]] || PATH=$1:${PATH#:}
 }
 
-# Custom bash_profile startup scripts.
-#
-BASHRC_D_README_ARG=bash_profile
+BASHRC_D_README_ARG=pre-login.bash
+. $BASHRC_D_DIR/custom/README
+BASHRC_D_README_ARG=login.bash
 . $BASHRC_D_DIR/custom/README
 unset -v BASHRC_D_README_ARG
 
 [ -f ~/.profile ] && . ~/.profile
+
+BASHRC_D_README_ARG=post-login.bash
+. $BASHRC_D_DIR/custom/README
+unset -v BASHRC_D_README_ARG

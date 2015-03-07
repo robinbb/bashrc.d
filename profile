@@ -16,12 +16,13 @@
 #     Robin Bate Boerop <me@robinbb.com>
 #
 
-export BASHRC_D_PROFILE_SOURCED=1
-export BASHRC_D_DIR=~/.bashrc.d
+BASHRC_D_DIR=~/.bashrc.d
 
 # Custom startup scripts.
 #
-BASHRC_D_README_ARG=profile
+BASHRC_D_README_ARG=pre-login.sh
+. $BASHRC_D_DIR/custom/README
+BASHRC_D_README_ARG=login.sh
 . $BASHRC_D_DIR/custom/README
 unset -v BASHRC_D_README_ARG
 
@@ -34,6 +35,13 @@ then
    . $HOME/.nix-profile/etc/profile.d/nix.sh 
 fi
 
-# Source ~/.bashrc upon login.
-#
-[ -f ~/.bashrc ] && . ~/.bashrc
+case $- in 
+   *i*) BASHRC_D_IS_INTERACTIVE=1 ;;
+   *)   BASHRC_D_IS_INTERACTIVE=  ;;
+esac
+
+[ "$BASHRC_D_IS_INTERACTIVE" ] && [ -f ~/.bashrc ] && . ~/.bashrc
+
+BASHRC_D_README_ARG=post-login.sh
+. $BASHRC_D_DIR/custom/README
+unset -v BASHRC_D_README_ARG

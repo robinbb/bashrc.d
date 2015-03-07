@@ -1,3 +1,5 @@
+[ "$PS1" ] || return
+
 #  Copyright 2015 Robin Bate Boerop <me@robinbb.com>
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,38 +18,33 @@
 #    Robin Bate Boerop <me@robinbb.com>
 #
 
-export BASHRC_D_BASHRC_SOURCED=1
-export BASHRC_D_DIR=~/.bashrc.d
-
-# DO NOT generate output from this script! Otherwise, 'scp' and 'sftp' will
-# not work properly.
-
-umask 077
-if [ "$PS1" ] ; then
-   # This shell is interactive.
-   alias colorls='ls --color=auto'
-   alias l='colorls -a'
-   alias ll='colorls -la'
-   export EDITOR='vi'
-   if [ "$BASH" ] ; then
-      # Bash-only interactive features.
-      shopt -s histappend
-      export PS1="\u@\h:\W[\!] "
-      export HISTSIZE=9999
-   fi
-fi
+BASHRC_D_DIR=~/.bashrc.d
 
 # Source custom bashrc scripts.
 #
-BASHRC_D_README_ARG=bashrc
+if [ "$BASH" ] ; then
+   BASHRC_D_README_ARG=pre-interactive.bash
+   . $BASHRC_D_DIR/custom/README
+   BASHRC_D_README_ARG=interactive.bash
+   . $BASHRC_D_DIR/custom/README
+fi
+BASHRC_D_README_ARG=pre-interactive.sh
+. $BASHRC_D_DIR/custom/README
+BASHRC_D_README_ARG=interactive.sh
 . $BASHRC_D_DIR/custom/README
 unset -v BASHRC_D_README_ARG
 
-# Source the system-wide /etc/bashrc unless otherwise directed.
-#
-if [ -z "$BASHRC_D_NO_ETC_BASHRC" ] && [ -r /etc/bashrc ] ; then
-   . /etc/bashrc
+if [ "$BASH" ] ; then
+   if [ -z "$BASHRC_D_NO_ETC_BASHRC" ] && \
+      [ -r /etc/bashrc ] ; then
+      . /etc/bashrc
+   fi
+   BASHRC_D_README_ARG=post-interactive.bash
+   . $BASHRC_D_DIR/custom/README
 fi
+BASHRC_D_README_ARG=post-interactive.sh
+. $BASHRC_D_DIR/custom/README
+unset -v BASHRC_D_README_ARG
 
 # Support 'keychain'.
 #

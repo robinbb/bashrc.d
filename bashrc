@@ -22,12 +22,6 @@ export BASHRC_D_DIR=~/.bashrc.d
 # DO NOT generate output from this script! Otherwise, 'scp' and 'sftp' will
 # not work properly.
 
-# Facilities that can be overridden by the user:
-#
-exit_trap() {
-   :
-}
-trap exit_trap EXIT
 umask 077
 if [ "$PS1" ] ; then
    # This shell is interactive.

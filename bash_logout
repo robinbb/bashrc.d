@@ -1,16 +1,2 @@
-#  Copyright 2015 Robin Bate Boerop <me@robinbb.com>
-#
-#  Licensed under the Apache License, Version 2.0 (the "License");
-#  you may not use this file except in compliance with the License.
-#  You may obtain a copy of the License at
-#
-#      http://www.apache.org/licenses/LICENSE-2.0
-#
-#  Unless required by applicable law or agreed to in writing, software
-#  distributed under the License is distributed on an "AS IS" BASIS,
-#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-#  See the License for the specific language governing permissions and
-#  limitations under the License.
-
-# STOP! Do not put code here. It will not do what you think it will.
-# Instead, please add code to the exit_trap() function in the bashrc file.
+# STOP! Do not put code here. It will not do what you think.  Instead, please
+# use bashrc_d_on_exit() to register a Bash command to be eval'd on exit.

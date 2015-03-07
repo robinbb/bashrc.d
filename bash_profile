@@ -19,6 +19,18 @@
 export BASHRC_D_BASH_PROFILE_SOURCED=1
 export BASHRC_D_DIR=~/.bashrc.d
 
+bashrc_d_on_exit_commands=()
+bashrc_d_invoke_on_exit_commands() {
+   local i
+   for i in ${bashrc_d_exit_commands[*]}; do
+      eval $i
+   done
+}
+bashrc_d_on_exit() {
+   bashrc_d_on_exit_commands+=("$*")
+   trap bashrc_d_invoke_on_exit_commands EXIT
+}
+   
 # Bash utility functions upon which the custom scripts can rely, but which
 # can be overridden if desired.
 #

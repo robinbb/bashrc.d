@@ -1,21 +1,23 @@
-# Startup File Sourcing Order
+# Bash Startup File Sourcing Order
 
-## Summary: bashrc.d interactive login sourcing order
+## Summary: bashrc.d startup file login sourcing order for interactive logins
 
-/etc/profile
- pre-login.bash
-     login.bash
- pre-login.sh
-     login.sh
- pre-interactive.bash
-     interactive.bash
- pre-interactive.sh
-     interactive.sh
-     /etc/bashrc
-post-interactive.sh
-post-interactive.bash
-post-login.sh
-post-login.bash
+First, `/etc/profile` is sourced. Then, for each bashrc.d *module* (see
+below), files are sourced in this order:
+
+     pre-login.bash
+         login.bash
+     pre-login.sh
+         login.sh
+     pre-interactive.bash
+         interactive.bash
+     pre-interactive.sh
+         interactive.sh
+         /etc/bashrc
+    post-interactive.sh
+    post-interactive.bash
+    post-login.sh
+    post-login.bash
 
 ## The Problem: complexities of bash startup file sourcing order
 

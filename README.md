@@ -5,24 +5,24 @@ An APLv2-licensed startup script framework for the Bash shell
 ## Quick-Start
 
 1. Fork this repository (to 'your-repo').
-2. Clone your forked repository into the '.bashrc.d' directory of your home
-   directory:
+2. Clone your forked repository into the `$HOME/.bashrc.d` directory:
 
     git clone git@github.com:your-repo/bashrc.d.git ~/.bashrc.d
 
-3. Invoke './install' to make the appropriate symbolic links.
-4. Customize if need be according to instructions in ~/.bashrc.d/custom/README.
+3. Invoke `~/.bashrc.d/install` to make the appropriate symbolic links.
+4. Customize by adding scripts to `~/.bashrc.d/custom` and linking modules to
+   the `~/.bashrc.d/custom/modules` directory.
 
 ## Features
 
 - Easy-to-customize framework for
-  [Bash](http://en.wikipedia.org/wiki/Bash_(Unix_shell)) shell startup scripts
+  [Bash](http://en.wikipedia.org/wiki/Bash_(Unix_shell))
+  shell startup scripts
 - Compatible with both the
-  [Bourne shell](http://en.wikipedia.org/wiki/Bourne_shell) ('sh') and the
+  [Bourne shell](http://en.wikipedia.org/wiki/Bourne_shell)
+  ('sh') and the
   [Debian Almquist shell](http://en.wikipedia.org/w/index.php?title=Debian_Almquist_shell)
   ('dash')
-- Easy to manage configuration
+- Sane configuration using modules
 - Compatible with 'sftp' and 'scp'
-- Built-in compatibility with
-  [Nix](http://en.wikipedia.org/wiki/Nix_package_manager)
-
+- Out-of-the-box modules for [Nix](http://en.wikipedia.org/wiki/Nix_package_manager)

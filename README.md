@@ -6,9 +6,11 @@ An APLv2-licensed startup script framework for the Bash shell
 
 1. Fork this repository (to 'your-repo').
 2. Clone your forked repository into the `$HOME/.bashrc.d` directory:
+
    ```
    git clone git@github.com:your-repo/bashrc.d.git ~/.bashrc.d
    ```
+
 3. Invoke `~/.bashrc.d/install` to make the appropriate symbolic links.
 4. Customize by adding scripts to `~/.bashrc.d/custom` and linking modules to
    the `~/.bashrc.d/custom/modules` directory.

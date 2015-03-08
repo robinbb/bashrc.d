@@ -20,8 +20,6 @@
 
 BASHRC_D_DIR=~/.bashrc.d
 
-# Source custom bashrc scripts.
-#
 if [ "$BASH" ] ; then
    BASHRC_D_README_ARG=pre-interactive.bash
    . $BASHRC_D_DIR/custom/README
@@ -34,34 +32,14 @@ BASHRC_D_README_ARG=interactive.sh
 . $BASHRC_D_DIR/custom/README
 unset -v BASHRC_D_README_ARG
 
-if [ "$BASH" ] ; then
-   if [ -z "$BASHRC_D_NO_ETC_BASHRC" ] && \
-      [ -r /etc/bashrc ] ; then
-      . /etc/bashrc
-   fi
-   BASHRC_D_README_ARG=post-interactive.bash
-   . $BASHRC_D_DIR/custom/README
+if [ "$BASH" ] \
+   && [ -z "$BASHRC_D_NO_ETC_BASHRC" ] \
+   && [ -r /etc/bashrc ]
+then
+   . /etc/bashrc
 fi
 BASHRC_D_README_ARG=post-interactive.sh
 . $BASHRC_D_DIR/custom/README
+BASHRC_D_README_ARG=post-interactive.bash
+. $BASHRC_D_DIR/custom/README
 unset -v BASHRC_D_README_ARG
-
-# Support 'keychain'.
-#
-if [ "$PS1" ] ; then
-   if [ -z $BASHRC_D_NO_KEYCHAIN ] ; then
-      BASHRC_D_KEYCHAIN=$(which keychain 2> /dev/null)
-      [ $? ] || eval $($BASHRC_D_KEYCHAIN --eval)
-      unset -v BASHRC_D_KEYCHAIN
-   fi
-   if [ "$BASH" ] ; then
-      if [ -n $BASHRC_D_NO_NIX ] && \
-         [ "$NIX_PATH" ]         && \
-         [ -d $HOME/.nix-profile/etc/bash_completion.d ]
-      then
-         for i in $HOME/.nix-profile/etc/bash_completion.d/* ; do
-            . $i
-         done
-      fi
-   fi
-fi

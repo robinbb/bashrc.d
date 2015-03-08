@@ -18,29 +18,13 @@
 
 BASHRC_D_DIR=~/.bashrc.d
 
-# Custom startup scripts.
-#
 BASHRC_D_README_ARG=pre-login.sh
 . $BASHRC_D_DIR/custom/README
 BASHRC_D_README_ARG=login.sh
 . $BASHRC_D_DIR/custom/README
 unset -v BASHRC_D_README_ARG
 
-# Support Nix, if present and not explicitly disabled.
-#
-if [ -n $BASHRC_D_NO_NIX ] && \
-   [ -z "$NIX_PATH" ]      && \
-   [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]
-then
-   . $HOME/.nix-profile/etc/profile.d/nix.sh 
-fi
-
-case $- in 
-   *i*) BASHRC_D_IS_INTERACTIVE=1 ;;
-   *)   BASHRC_D_IS_INTERACTIVE=  ;;
-esac
-
-[ "$BASHRC_D_IS_INTERACTIVE" ] && [ -f ~/.bashrc ] && . ~/.bashrc
+[ "$PS1" ] && [ -r ~/.bashrc ] && . ~/.bashrc
 
 BASHRC_D_README_ARG=post-login.sh
 . $BASHRC_D_DIR/custom/README

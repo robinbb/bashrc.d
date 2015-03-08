@@ -18,8 +18,7 @@
 #     Robin Bate Boerop <me@robinbb.com>
 #
 
-export BASHRC_D_README_SOURCED=1
-export BASHRC_D_CUSTOM_DIR=~/.bashrc.d/custom
+BASHRC_D_CUSTOM_DIR=~/.bashrc.d/custom
 
 # Custom scripts in this directory are always sourced if they are readable.
 #
@@ -33,10 +32,3 @@ script=${BASHRC_D_CUSTOM_DIR}/users/${USER}/${BASHRC_D_README_ARG}
 [ -r $script ] && . $script
 script=${BASHRC_D_CUSTOM_DIR}/${BASHRC_D_README_ARG}
 [ -r $script ] && . $script
-
-#case $1 in
-#   bash_profile) ${BASHRC_D_CUSTOM_DIR}/bash_profile ;;
-#   profile)      ${BASHRC_D_CUSTOM_DIR}/profile ;;
-#   bashrc)       ${BASHRC_D_CUSTOM_DIR}/bashrc ;;
-#   *)            ${BASHRC_D_CUSTOM_DIR}/$1 ;;
-#esac

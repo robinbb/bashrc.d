@@ -1,4 +1,4 @@
-#  Copyright 2015 Robin Bate Boerop <me@robinbb.com>
+#  Copyright 2015 Robin Bate Boerop and the Contributors
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -18,6 +18,8 @@
 
 BASHRC_D_DIR=~/.bashrc.d
 
+# Exit trap handling, bashrc.d-style.
+#
 bashrc_d_on_exit_commands=()
 bashrc_d_invoke_on_exit_commands() {
    local i
@@ -28,10 +30,6 @@ bashrc_d_invoke_on_exit_commands() {
 bashrc_d_on_exit() {
    bashrc_d_on_exit_commands=("$*" "${bashrc_d_on_exit_commands[@]}")
    trap bashrc_d_invoke_on_exit_commands EXIT
-}
-
-add2path() {
-   [[ ":$PATH:" =~ ":$1:" ]] || PATH=$1:${PATH#:}
 }
 
 BASHRC_D_README_ARG=pre-login.bash

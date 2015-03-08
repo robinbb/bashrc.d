@@ -1,6 +1,6 @@
 # README
 #
-#  Copyright 2015 Robin Bate Boerop <me@robinbb.com>
+#  Copyright 2015 Robin Bate Boerop and the Contributors
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -18,17 +18,24 @@
 #     Robin Bate Boerop <me@robinbb.com>
 #
 
-BASHRC_D_CUSTOM_DIR=~/.bashrc.d/custom
+file="$BASHRC_D_README_ARG"
 
-# Custom scripts in this directory are always sourced if they are readable.
-#
-script=${BASHRC_D_CUSTOM_DIR}/hosts/${HOSTNAME}/${USER}/${BASHRC_D_README_ARG}
-[ -r $script ] && . $script
-script=${BASHRC_D_CUSTOM_DIR}/users/${USER}/${HOSTNAME}/${BASHRC_D_README_ARG}
-[ -r $script ] && . $script
-script=${BASHRC_D_CUSTOM_DIR}/hosts/${HOSTNAME}/${BASHRC_D_README_ARG}
-[ -r $script ] && . $script
-script=${BASHRC_D_CUSTOM_DIR}/users/${USER}/${BASHRC_D_README_ARG}
-[ -r $script ] && . $script
-script=${BASHRC_D_CUSTOM_DIR}/${BASHRC_D_README_ARG}
-[ -r $script ] && . $script
+f() {
+   dir="~/.bashrc.d/custom/$1"
+   script="$dir"/"$file"
+   [ -r $script ] && . $script
+}
+f "/hosts/$HOSTNAME/$USER"
+f "/users/$USER/$HOSTNAME"
+f "/hosts/$HOSTNAME"
+f "/users/$USER"
+f ""
+unset -f f
+
+for dir in ~/.bashrc.d/modules/* ; do
+   [ -d "$dir" ] || break
+   script="$dir"/$file
+   [ -r $script ] && . $script
+done
+
+unset -v dir file script

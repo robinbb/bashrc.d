@@ -1,4 +1,4 @@
-case $(uname -s) of
+case $(uname -s) in
    Darwin) alias colorls='ls -G' ;;
    *)      alias colorls='ls --color=auto' ;;
 esac

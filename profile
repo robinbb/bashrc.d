@@ -1,4 +1,4 @@
-#  Copyright 2015 Robin Bate Boerop <me@robinbb.com>
+#  Copyright 2015 Robin Bate Boerop and the Contributors
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -16,16 +16,13 @@
 #     Robin Bate Boerop <me@robinbb.com>
 #
 
-BASHRC_D_DIR=~/.bashrc.d
-
-BASHRC_D_README_ARG=pre-login.sh
-. $BASHRC_D_DIR/custom/README
-BASHRC_D_README_ARG=login.sh
-. $BASHRC_D_DIR/custom/README
-unset -v BASHRC_D_README_ARG
+BASHRC_D_DISPATCHER=~/.bashrc.d/custom/README
+BASHRC_D_PHASE=pre-login.sh . $BASHRC_D_DISPATCHER
+BASHRC_D_PHASE=login.sh . $BASHRC_D_DISPATCHER
+unset -v BASHRC_D_DISPATCHER
 
 [ "$PS1" ] && [ -r ~/.bashrc ] && . ~/.bashrc
 
-BASHRC_D_README_ARG=post-login.sh
-. $BASHRC_D_DIR/custom/README
-unset -v BASHRC_D_README_ARG
+BASHRC_D_DISPATCHER=~/.bashrc.d/custom/README
+BASHRC_D_PHASE=post-login.sh . $BASHRC_D_DISPATCHER
+unset -v BASHRC_D_DISPATCHER

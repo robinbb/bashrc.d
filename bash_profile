@@ -16,8 +16,6 @@
 #     Robin Bate Boerop <me@robinbb.com>
 #
 
-BASHRC_D_DIR=~/.bashrc.d
-
 # Exit trap handling, bashrc.d-style.
 #
 bashrc_d_on_exit_commands=()
@@ -32,14 +30,13 @@ bashrc_d_on_exit() {
    trap bashrc_d_invoke_on_exit_commands EXIT
 }
 
-BASHRC_D_README_ARG=pre-login.bash
-. $BASHRC_D_DIR/custom/README
-BASHRC_D_README_ARG=login.bash
-. $BASHRC_D_DIR/custom/README
-unset -v BASHRC_D_README_ARG
+BASHRC_D_DISPATCHER=~/.bashrc.d/custom/README
+BASHRC_D_PHASE=pre-login.bash . $BASHRC_D_DISPATCHER
+BASHRC_D_PHASE=login.bash . $BASHRC_D_DISPATCHER
+unset -v BASHRC_D_DISPATCHER
 
-[ -f ~/.profile ] && . ~/.profile
+[ -r ~/.profile ] && . ~/.profile
 
-BASHRC_D_README_ARG=post-login.bash
-. $BASHRC_D_DIR/custom/README
-unset -v BASHRC_D_README_ARG
+BASHRC_D_DISPATCHER=~/.bashrc.d/custom/README
+BASHRC_D_PHASE=post-login.bash . $BASHRC_D_DISPATCHER
+unset -v BASHRC_D_DISPATCHER

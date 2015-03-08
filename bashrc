@@ -1,6 +1,6 @@
 [ "$PS1" ] || return
 
-#  Copyright 2015 Robin Bate Boerop <me@robinbb.com>
+#  Copyright 2015 Robin Bate Boerop and the Contributors
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
 #  you may not use this file except in compliance with the License.
@@ -18,19 +18,14 @@
 #    Robin Bate Boerop <me@robinbb.com>
 #
 
-BASHRC_D_DIR=~/.bashrc.d
-
+BASHRC_D_DISPATCHER=~/.bashrc.d/custom/README
 if [ "$BASH" ] ; then
-   BASHRC_D_README_ARG=pre-interactive.bash
-   . $BASHRC_D_DIR/custom/README
-   BASHRC_D_README_ARG=interactive.bash
-   . $BASHRC_D_DIR/custom/README
+   BASHRC_D_PHASE=pre-interactive.bash . $BASHRC_D_DISPATCHER
+   BASHRC_D_PHASE=interactive.bash . $BASHRC_D_DISPATCHER
 fi
-BASHRC_D_README_ARG=pre-interactive.sh
-. $BASHRC_D_DIR/custom/README
-BASHRC_D_README_ARG=interactive.sh
-. $BASHRC_D_DIR/custom/README
-unset -v BASHRC_D_README_ARG
+BASHRC_D_PHASE=pre-interactive.sh . $BASHRC_D_DISPATCHER
+BASHRC_D_PHASE=interactive.sh . $BASHRC_D_DISPATCHER
+unset -v BASHRC_D_DISPATCHER
 
 if [ "$BASH" ] \
    && [ -z "$BASHRC_D_NO_ETC_BASHRC" ] \
@@ -38,10 +33,7 @@ if [ "$BASH" ] \
 then
    . /etc/bashrc
 fi
-BASHRC_D_README_ARG=post-interactive.sh
-. $BASHRC_D_DIR/custom/README
-if [ "$BASH" ] ; then
-   BASHRC_D_README_ARG=post-interactive.bash
-   . $BASHRC_D_DIR/custom/README
-fi
-unset -v BASHRC_D_README_ARG
+BASHRC_D_DISPATCHER=~/.bashrc.d/custom/README
+BASHRC_D_PHASE=post-interactive.sh . $BASHRC_D_DISPATCHER
+[ "$BASH" ] && BASHRC_D_PHASE=post-interactive.bash . $BASHRC_D_DISPATCHER
+unset -v BASHRC_D_DISPATCHER

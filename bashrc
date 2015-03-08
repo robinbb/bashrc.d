@@ -40,6 +40,8 @@ then
 fi
 BASHRC_D_README_ARG=post-interactive.sh
 . $BASHRC_D_DIR/custom/README
-BASHRC_D_README_ARG=post-interactive.bash
-. $BASHRC_D_DIR/custom/README
+if [ "$BASH" ] ; then
+   BASHRC_D_README_ARG=post-interactive.bash
+   . $BASHRC_D_DIR/custom/README
+fi
 unset -v BASHRC_D_README_ARG

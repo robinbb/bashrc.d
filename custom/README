@@ -18,24 +18,29 @@
 #     Robin Bate Boerop <me@robinbb.com>
 #
 
-file="$BASHRC_D_README_ARG"
+phase="$BASHRC_D_README_ARG"
+custom_dir=~/.bashrc.d/custom
 
-f() {
-   dir="~/.bashrc.d/custom/$1"
-   script="$dir"/"$file"
-   [ -r $script ] && . $script
-}
-f "/hosts/$HOSTNAME/$USER"
-f "/users/$USER/$HOSTNAME"
-f "/hosts/$HOSTNAME"
-f "/users/$USER"
-f ""
-unset -f f
-
-for dir in ~/.bashrc.d/modules/* ; do
-   [ -d "$dir" ] || break
-   script="$dir"/$file
-   [ -r $script ] && . $script
+for dir in "/hosts/$HOSTNAME/$USER" \
+           "/users/$USER/$HOSTNAME" \
+           "/hosts/$HOSTNAME"       \
+           "/users/$USER"           \
+           "" ; do
+   dir="$custom_dir$dir"
+   script="$dir"/$phase
+   if [ -r "$script" ] ; then
+      # echo "Sourcing custom $script"  # Debugging
+      . $script
+   fi
 done
 
-unset -v dir file script
+for dir in "$custom_dir"/modules/* ; do
+   [ -h "$dir" ] || continue
+   script="$dir"/$phase
+   if [ -r $script ] ; then
+      # echo "Sourcing module $script"  # Debugging
+      . $script
+   fi
+done
+
+unset -v script dir custom_dir phase

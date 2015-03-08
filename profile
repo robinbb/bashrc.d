@@ -16,13 +16,9 @@
 #     Robin Bate Boerop <me@robinbb.com>
 #
 
-BASHRC_D_DISPATCHER=~/.bashrc.d/custom/README
-BASHRC_D_PHASE=pre-login.sh . $BASHRC_D_DISPATCHER
-BASHRC_D_PHASE=login.sh . $BASHRC_D_DISPATCHER
-unset -v BASHRC_D_DISPATCHER
+BASHRC_D_PHASE=pre-login.sh . ~/.bashrc.d/dispatch
+BASHRC_D_PHASE=login.sh . ~/.bashrc.d/dispatch
 
 [ "$PS1" ] && [ -r ~/.bashrc ] && . ~/.bashrc
 
-BASHRC_D_DISPATCHER=~/.bashrc.d/custom/README
-BASHRC_D_PHASE=post-login.sh . $BASHRC_D_DISPATCHER
-unset -v BASHRC_D_DISPATCHER
+BASHRC_D_PHASE=post-login.sh . ~/.bashrc.d/dispatch

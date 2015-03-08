@@ -30,13 +30,9 @@ bashrc_d_on_exit() {
    trap bashrc_d_invoke_on_exit_commands EXIT
 }
 
-BASHRC_D_DISPATCHER=~/.bashrc.d/custom/README
-BASHRC_D_PHASE=pre-login.bash . $BASHRC_D_DISPATCHER
-BASHRC_D_PHASE=login.bash . $BASHRC_D_DISPATCHER
-unset -v BASHRC_D_DISPATCHER
+BASHRC_D_PHASE=pre-login.bash . ~/.bashrc.d/dispatch
+BASHRC_D_PHASE=login.bash . ~/.bashrc.d/dispatch
 
 [ -r ~/.profile ] && . ~/.profile
 
-BASHRC_D_DISPATCHER=~/.bashrc.d/custom/README
-BASHRC_D_PHASE=post-login.bash . $BASHRC_D_DISPATCHER
-unset -v BASHRC_D_DISPATCHER
+BASHRC_D_PHASE=post-login.bash . ~/.bashrc.d/dispatch

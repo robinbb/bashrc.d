@@ -18,14 +18,12 @@
 #    Robin Bate Boerop <me@robinbb.com>
 #
 
-BASHRC_D_DISPATCHER=~/.bashrc.d/custom/README
 if [ "$BASH" ] ; then
-   BASHRC_D_PHASE=pre-interactive.bash . $BASHRC_D_DISPATCHER
-   BASHRC_D_PHASE=interactive.bash . $BASHRC_D_DISPATCHER
+   BASHRC_D_PHASE=pre-interactive.bash . ~/.bashrc.d/dispatch
+   BASHRC_D_PHASE=interactive.bash . ~/.bashrc.d/dispatch
 fi
-BASHRC_D_PHASE=pre-interactive.sh . $BASHRC_D_DISPATCHER
-BASHRC_D_PHASE=interactive.sh . $BASHRC_D_DISPATCHER
-unset -v BASHRC_D_DISPATCHER
+BASHRC_D_PHASE=pre-interactive.sh . ~/.bashrc.d/dispatch
+BASHRC_D_PHASE=interactive.sh . ~/.bashrc.d/dispatch
 
 if [ "$BASH" ] \
    && [ -z "$BASHRC_D_NO_ETC_BASHRC" ] \
@@ -33,7 +31,5 @@ if [ "$BASH" ] \
 then
    . /etc/bashrc
 fi
-BASHRC_D_DISPATCHER=~/.bashrc.d/custom/README
-BASHRC_D_PHASE=post-interactive.sh . $BASHRC_D_DISPATCHER
-[ "$BASH" ] && BASHRC_D_PHASE=post-interactive.bash . $BASHRC_D_DISPATCHER
-unset -v BASHRC_D_DISPATCHER
+BASHRC_D_PHASE=post-interactive.sh . ~/.bashrc.d/dispatch
+[ "$BASH" ] && BASHRC_D_PHASE=post-interactive.bash . ~/.bashrc.d/dispatch

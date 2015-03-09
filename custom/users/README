@@ -1,0 +1,5 @@
+Directories in this directory, `custom/users`, contain scripts to be sourced
+by the bashrc.d framework. Files in directory custom/users/$U123 will only be
+sourced by hosts with $HOSTNAME equal to $U123.
+
+In other words, this directory is for per-user customizations.

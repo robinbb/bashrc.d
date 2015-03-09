@@ -1,2 +1,2 @@
-echo HOMESHICK
-. "$HOME"/.homesick/repos/homeshick/homeshick.sh
+[ -r "$HOME"/.homesick/repos/homeshick/homeshick.sh ] \
+   && . "$HOME"/.homesick/repos/homeshick/homeshick.sh

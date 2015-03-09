@@ -1,0 +1,5 @@
+Directories in this directory, `custom/hosts`, contain scripts to be sourced
+by the bashrc.d framework. Files in directory custom/hosts/$XYZ will only be
+sourced by hosts with $HOSTNAME equal to $XYZ.
+
+In other words, this directory is for per-host customizations.

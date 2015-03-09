@@ -1,4 +1,3 @@
-echo "nix/interactive.sh"
 if [ -z "$BASHRC_D_NO_NIX" ] \
    && [ "$NIX_PATH" ]      \
    && [ -d "$HOME"/.nix-profile/share/man ]

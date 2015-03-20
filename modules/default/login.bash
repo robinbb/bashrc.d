@@ -1,10 +1,18 @@
 add2path() {
    [[ ":$PATH:" =~ ":$1:" ]] || PATH=$1:${PATH#:}
 }
+removeFromPath() {
+   local p t
+   t=$IFS
+   IFS=':'
+   p=($PATH)
+   unset IFS
+   p=(${p[@]%%$1})
+   IFS=':'
+   PATH="${p[*]}"
+   IFS=$t
+}
 prepend2path() {
-   PATH="$1${PATH:+:}$PATH"
-   local end=${PATH##*:$1}
-   local start=${PATH%:$1*}
-   [[ $start != $end ]] && end="$start$end"
-   PATH="$end"
+   removeFromPath $1
+   PATH=$1${PATH:+:}$PATH
 }

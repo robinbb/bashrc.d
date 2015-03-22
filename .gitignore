@@ -1,4 +1,5 @@
-backup-bashrc-files
+backup-bashrc-files/*
+!backup-bashrc-files/README
 custom/*
 !custom/README
 !custom/modules/README

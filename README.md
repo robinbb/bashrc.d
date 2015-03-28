@@ -1,6 +1,7 @@
 # bashrc.d
 
 'bashrc.d' is an APLv2-licensed startup script framework for the Bash shell.
+[Motivations](https://www.linkedin.com/pulse/bash-startup-scripts-redux-robin-bate-boerop).
 
 ## Quick-Start
 

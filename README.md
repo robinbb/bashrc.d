@@ -1,16 +1,14 @@
 # bashrc.d
 
-An APLv2-licensed startup script framework for the Bash shell
+'bashrc.d' is an APLv2-licensed startup script framework for the Bash shell.
 
 ## Quick-Start
 
 1. Fork this repository (to 'your-repo').
-2. Clone your forked repository into the `$HOME/.bashrc.d` directory:
-
-   ```
-   git clone git@github.com:your-repo/bashrc.d.git ~/.bashrc.d
-   ```
-
+2. Clone your forked repository into the `~/.bashrc.d` directory:
+    ```
+    git clone git@github.com:your-repo/bashrc.d.git ~/.bashrc.d
+    ```
 3. Invoke `~/.bashrc.d/install` to make the appropriate symbolic links.
 4. Customize by adding scripts to `~/.bashrc.d/custom` and linking modules to
    the `~/.bashrc.d/custom/modules` directory.
@@ -28,3 +26,8 @@ An APLv2-licensed startup script framework for the Bash shell
 - Sane configuration using modules
 - Compatible with 'sftp' and 'scp'
 - Out-of-the-box modules for [Nix](http://en.wikipedia.org/wiki/Nix_package_manager)
+
+## Contributions
+
+Contributions are welcome. Please submit a pull request via
+[Github](https://github.com/robinbb/bashrc.d).

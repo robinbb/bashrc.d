@@ -1,5 +1,3 @@
-[ "$PS1" ] || return
-
 #  Copyright 2015 Robin Bate Boerop and the Contributors
 #
 #  Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +15,8 @@
 # Contributors:
 #    Robin Bate Boerop <me@robinbb.com>
 #
+
+[ "$PS1" ] || return
 
 if [ "$BASH" ] ; then
    BASHRC_D_PHASE=pre-interactive.bash . ~/.bashrc.d/dispatch
